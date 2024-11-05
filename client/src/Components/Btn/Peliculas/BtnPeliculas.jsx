@@ -40,10 +40,14 @@ const BtnProduct = ({propiedadesBd, type, titulo, genero}) => {
     })
 
     const options = [
-        { value: 'laptops', label: 'Laptops' },
-        { value: 'celulares', label: 'Celulares' },
-        { value: 'componentes', label: 'Componentes' },
-        { value: 'gaming', label: 'Gaming' }
+        { value: 'terror', label: 'terror' },
+        { value: 'accion', label: 'Accion' },
+        { value: 'comedia', label: 'Comedia' },
+        { value: 'drama', label: 'Drama' },
+        { value: 'ciencia ficcion', label: 'Ciencia Ficcion' },
+        { value: 'animacion', label: 'Animacion' },
+        { value: 'fantasia', label: 'Fantasia' },
+        { value: 'romance', label: 'Romance' },
       ]
 
     const Categoria = () => (
