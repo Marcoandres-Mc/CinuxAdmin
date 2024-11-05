@@ -7,7 +7,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import dulceriaRoutes from './routes/dulceria.routes.js';
-
+import sedesRoutes from './routes/sedes.routes.js'
 
 const app = express();
 dotenv.config();
@@ -29,7 +29,7 @@ app.use(cors(
 ))
 app.use('/api', catalogoPeliculasRoutes);
 app.use('/api', userRoutes);
-app.use('/api', catalogoPeliculasRoutes);
+app.use('/api', sedesRoutes)
 app.use('/api', dulceriaRoutes);
 app.use('/api/auth', authRoutes);
 

@@ -3,13 +3,13 @@ import Tabla from "../../Components/Tabla";
 import {Typography} from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { Spinner } from "@material-tailwind/react";
-import BtnUser from "../../Components/Btn/User/BtnUser";
 import { getSedes } from "../../api/sedes.js";
+import BtnSedes from "../../Components/Btn/Sedes/BtnSedes.jsx";
 
 
 const Sedes = () => {
-  const propiedadesTb = ['nombre', 'direccion', 'telefono', 'email', 'url'];
-  const propiedades = ['nombre', 'direccion', 'telefono', 'email', 'url'];
+  const propiedadesTb = ['nombre', 'direccion', 'ciudad', 'telefono', 'url'];
+  const propiedades = ['nombre', 'direccion', 'ciudad', 'telefono'];
 
   const [loading, setLoading] = useState(true);
   const [sedes, setSedes] = useState([]);
@@ -41,9 +41,9 @@ const Sedes = () => {
           </div>
         ):(
           <>
-          <Tabla propiedadesBd={propiedadesTb} bd={sedes} title={"Sedes"}/>
+          <Tabla propiedadesBd={propiedades} bd={sedes} title={"Sedes"}/>
           <div className="my-5">
-            <BtnUser propiedadesBd={propiedades} type="new" titulo="sedes" genero="f"/>
+            <BtnSedes propiedadesBd={propiedadesTb} type="new" titulo="sedes" genero="f"/>
           </div>
           </>
         )}

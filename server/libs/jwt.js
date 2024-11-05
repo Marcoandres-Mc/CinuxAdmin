@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken';
 
+const SECRET_KEY = process.env.SECRET_KEY;
+
 export default function createAssessToken(payLoad) {
-    const SECRET_KEY = "tu_clave_secreta";
     return new Promise((resolve, reject) => {
         jwt.sign(
             payLoad, 

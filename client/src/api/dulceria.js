@@ -3,29 +3,29 @@ import axios from 'axios';
 const API = "http://localhost:3500"
 
 
-export const getPeliculas = async () => {
+export const getDulces = async () => {
     try {
         const response = await axios.get(`${API}/api/dulces`);
         return response.data;
     } catch (error) {
         console.error("Error fetching peliculas:", error);
-        throw error;
+        return [];
     }
 };
 
-export const getPelicula = async (id) => {
+export const getDulce = async (id) => {
     try {
         const response = await axios.get(`${API}/api/dulce/${id}`);
         return response.data;
     } catch (error) {
         console.error(`Error fetching pelicula with id ${id}:`, error);
-        throw error;
+        return [];
     }
 }
 
-export const registerPelicula = async (pelicula) => {
+export const registerDulce = async (dulce) => {
     try {
-        const response = await axios.post(`${API}/api/dulce`, pelicula);
+        const response = await axios.post(`${API}/api/dulces`, dulce);
         return response.data;
     } catch (error) {
         console.error("Error creating pelicula:", error);
@@ -34,9 +34,9 @@ export const registerPelicula = async (pelicula) => {
 };
 
 
-export const deletePelicula = async (id) => {
+export const deleteDulce = async (id) => {
     try {
-        const response = await axios.delete(`${API}/api/dulce/${id}`);
+        const response = await axios.delete(`${API}/api/dulces/${id}`);
         return response.data;
     } catch (error) {
         console.error(`Error deleting pelicula with id ${id}:`, error);

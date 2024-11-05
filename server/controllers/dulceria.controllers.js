@@ -1,63 +1,48 @@
-import Dulceria from '../models/dulceria.model.js';
+import Dulce from '../models/dulceria.model.js';
 
 export const getDulces = async (req, res) => {
-    const foundDulces = await Dulceria.find();
-    if(!foundDulces){
-        return res.status(404).json({mensaje: 'Aun no se ha creado nada aqui'})
-    }
-    res.json(foundDulces);
-}
+  try {
+    const dulces = await Dulce.find();
+    res.json(dulces);
+  } catch (error) {
+    res.status(500).json({ mensaje: error.message });
+  }
+};
 
 export const getDulce = async (req, res) => {
-    try {
-        const foundDulce = await Dulceria.findById(req.params.id);
-        if (!foundDulce) {
-            return res.status(404).json({ mensaje: 'Dulce no encontrado' });
-        }
-        res.json(foundDulce);
-    } catch (error) {
-        res.status(500).json({ mensaje: error.message });
+  try {
+    const dulce = await Dulce.findById(req.params.id);
+    if (!dulce) {
+      return res.status(404).json({ mensaje: 'Dulce no encontrado' });
     }
-}
+    res.json(dulce);
+  } catch (error) {
+    res.status(500).json({ mensaje: error.message });
+  }
+};
 
 export const registerDulce = async (req, res) => {
-    const { nombre, categoria, marca, precio, stock, url, descripcion } = req.body;
-    
-    if (!nombre || !categoria || !marca || !precio || !stock || !url || !descripcion) {
-        return res.status(400).json({ mensaje: 'Todos los campos son obligatorios' });
+  try {
+    const { nombre, categoria, marca, precio, stock, descripcion, url } = req.body;
+    if (!nombre || !categoria || !marca || !precio || !stock || !descripcion || !url) {
+      return res.status(400).json({ mensaje: 'Todos los campos son obligatorios' });
     }
-
-    try {
-        const newDulce = new Dulceria({
-            nombre,
-            categoria,
-            marca,
-            precio,
-            stock,
-            url,
-            descripcion,
-            stock,
-        });
-
-        const DulceSaved = await newDulce.save();
-        res.status(201).json(DulceSaved);
-
-    } catch (error) {
-        res.status(501).json({ mensaje: error.message });
-    }
-}
+    const newDulce = new Dulce({ nombre, categoria, marca, precio, stock, descripcion, url });
+    const savedDulce = await newDulce.save();
+    res.status(201).json(savedDulce);
+  } catch (error) {
+    res.status(400).json({ mensaje: error.message });
+  }
+};
 
 export const deleteDulce = async (req, res) => {
-    const { id } = req.params;
-  
-    if (!id) {
-      return res.status(400).json({ mensaje: 'ID es requerido' });
+  try {
+    const dulce = await Dulce.findByIdAndDelete(req.params.id);
+    if (!dulce) {
+      return res.status(404).json({ mensaje: 'Dulce no encontrado' });
     }
-  
-    try {
-        await Dulceria.findByIdAndDelete(id);
-        res.json({ mensaje: 'Dulce eliminado' });
-    } catch (error) {
-        res.status(500).json({ mensaje: error.message });
-    }
-}
+    res.json({ mensaje: 'Dulce eliminado' });
+  } catch (error) {
+    res.status(500).json({ mensaje: error.message });
+  }
+};

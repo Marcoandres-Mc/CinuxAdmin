@@ -6,16 +6,15 @@ import Tabla from "../../Components/Tabla";
 import { useEffect, useState } from "react";
 import {Typography} from "@material-tailwind/react";
 import { getPeliculas } from "../../api/catalogoPeliculas";
-import BtnPelicula from "../../Components/Btn/Peliculas/BtnPeliculas";
+import BtnPeliculas from "../../Components/Btn/Peliculas/BtnPeliculas";
 import { Spinner } from "@material-tailwind/react";
 
 
 
 const Ajustes = () => {
-  const propiedadesTb = ['nombre', 'categoria', 'marca', 'precio', 'stock'];
-  const propiedades = ['nombre', 'marca', 'precio', 'stock', 'url', 'descripcion'];
+  const propiedadesTb = ['nombre', 'productora','categoria', 'descripcion','url'];
+  const propiedades = ['nombre', 'productora','categoria'];
 
-  const categoria = ['laptops','celulares','gaming','componentes']
   const [pelicula, setPelicula] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -27,6 +26,7 @@ const Ajustes = () => {
         setPelicula(data);
       } catch (error) {
         console.error('Error fetching products:', error);
+        console.log("Error en la carga de datos");
       } finally {
         setLoading(false);
       }
@@ -47,9 +47,9 @@ const Ajustes = () => {
           </div>
         ):(
           <>
-            <Tabla propiedadesBd={propiedadesTb} bd={pelicula} title={"Peliculas"}/>
+            <Tabla propiedadesBd={propiedades} bd={pelicula} title={"Peliculas"}/>
             <div className="my-5">
-              <BtnPelicula propiedadesBd={propiedades} type="new" titulo="producto" genero="f" />
+              <BtnPeliculas propiedadesBd={propiedadesTb} type="new" titulo="pelicula" genero="f" />
             </div>
           </>
         )}

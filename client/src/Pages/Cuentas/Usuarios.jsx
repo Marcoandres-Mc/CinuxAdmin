@@ -8,7 +8,6 @@ import {Typography} from '@material-tailwind/react';
 import {getUsers} from '../../api/users';
 import { useEffect, useState } from 'react';
 import { Spinner } from '@material-tailwind/react';
-import { data } from 'autoprefixer';
 
 
 

@@ -7,7 +7,6 @@ import BtnDeleteP from "./Btn/Peliculas/BtnDeleteP";
 import {Button} from "@material-tailwind/react";
 import BtnUser from "./Btn/User/BtnUser";
 import BtnAdmin from "./Btn/Admin/BtnAdmin";
-import BtnProduct from "./Btn/Peliculas/BtnPeliculas";
 import BtnPelicula from "./Btn/Peliculas/BtnPeliculas";
 import BtnSede from "./Btn/Sedes/BtnSedes";
 import BtnDeleteS from "./Btn/Sedes/BtnDeleteS";
@@ -74,19 +73,17 @@ export function Tabla({propiedadesBd, bd, title,propiedades}) {
                     ))
                   }
                   <td className="p-4 text-center"> 
-                    {title === "Admins" ? <BtnAdmin n={index} type="edit" bd={bd} titulo={title} /> : null}
-                    {title === "Usuarios" ? <BtnUser type="edit" bd={bd} propiedadesBd={propiedadesBd} titulo={title} /> : null}
-                    {title === "Productos" ? <BtnProduct type="edit" bd={bd} propiedadesBd={propiedadesBd} titulo={title} /> : null}
-                    {title === "Peliculas" ? <BtnPelicula type="edit" bd={bd} propiedadesBd={propiedadesBd} titulo={title} /> : null}
-                    {title === "Sedes" ? <BtnSede type="edit" bd={bd} propiedadesBd={propiedadesBd} titulo={title} /> : null}
-                    {title === "Dulces" ? <BtnDulce type="edit" bd={bd} propiedadesBd={propiedadesBd} titulo={title} /> : null}
+                  {title === "Admins" ? <BtnAdmin n={index} type="edit" bd={bd} titulo={title} /> : null}
+                  {title === "Usuarios" ? <BtnUser type="edit" bd={bd} propiedadesBd={propiedadesBd} titulo={title} genero="m" /> : null}
+                  {title === "Peliculas" ? <BtnPelicula type="edit" bd={bd} propiedadesBd={propiedadesBd} titulo={title} /> : null}
+                  {title === "Sedes" ? <BtnSede type="edit" bd={bd} propiedadesBd={propiedadesBd} titulo={title} /> : null}
+                  {title === "Dulces" ? <BtnDulce type="edit" bd={bd} propiedadesBd={propiedadesBd} titulo={title} /> : null}
                   </td>
 
                   <td className="p-4 text-center">
                     <Button className="font-bold">
                       {title === "Admins" ? <BtnDeleteA type="delete" titulo={title} id={item._id} /> : null}
                       {title === "Usuarios" ? <BtnDeleteU type="delete" titulo={title} id={item._id} /> : null}
-                      {title === "Productos" ? <BtnDeleteP type="delete" titulo={title} id={item._id} /> : null}
                       {title === "Peliculas" ? <BtnDeleteP type="delete" titulo={title} id={item._id} /> : null}
                       {title === "Sedes" ? <BtnDeleteS type="delete" titulo={title} id={item._id} /> : null}
                       {title === "Dulces" ? <BtnDeleteD type="delete" titulo={title} id={item._id} /> : null}

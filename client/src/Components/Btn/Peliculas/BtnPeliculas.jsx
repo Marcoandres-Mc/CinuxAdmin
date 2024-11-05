@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import PropTypes from 'prop-types';
 
@@ -18,16 +18,18 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
 import Select from 'react-select';
+import { getPelicula, registerPelicula } from '../../../api/catalogoPeliculas';
 
 
 
-const BtnProduct = ({propiedadesBd, type, titulo, genero}) => {
+const BtnPeliculas = ({type, titulo, genero,bd, n}) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(!open);
 
     const letraInicial = genero === 'f' ? 'a' : 'o';
     const [letra] = useState(letraInicial);
 
+    const propiedades = ['nombre', 'productora','categoria', 'descripcion','url'];
 
 
 
@@ -35,31 +37,11 @@ const BtnProduct = ({propiedadesBd, type, titulo, genero}) => {
 
     const onSubmit = handleSubmit((data)=>{
         console.log(data);
-        registerRegister(data);
+        registerPelicula(data);
 
     })
 
-    const options = [
-        { value: 'terror', label: 'terror' },
-        { value: 'accion', label: 'Accion' },
-        { value: 'comedia', label: 'Comedia' },
-        { value: 'drama', label: 'Drama' },
-        { value: 'ciencia ficcion', label: 'Ciencia Ficcion' },
-        { value: 'animacion', label: 'Animacion' },
-        { value: 'fantasia', label: 'Fantasia' },
-        { value: 'romance', label: 'Romance' },
-      ]
 
-    const Categoria = () => (
-        <div className='my-3 p-0'>
-            <label className="text-blue-gray-700" htmlFor="categoria">{"categoria"}</label>
-            <Select 
-            {...register("categoria", {required: true})}
-            options={options} 
-            />
-            {errors["categoria"] && <Typography variant="small" color="red" className="mb-2 text-left font-medium">Este campo es requerido</Typography>}
-        </div>
-    )
 
 
 return (
@@ -94,7 +76,7 @@ return (
                 className="mb-2 text-left font-medium">
                 </Typography>
                 {
-                    Array.isArray(propiedadesBd) && propiedadesBd.map((item, index) => (
+                    Array.isArray(propiedades) && propiedades.map((item, index) => (
                     <div key={index}>
                         <Typography
                         variant="small"
@@ -123,7 +105,6 @@ return (
                     </div>
                     ))
                 }
-                <Categoria/>
                 
             </DialogBody>
             <DialogFooter>
@@ -138,11 +119,5 @@ return (
 )
 }
 
-BtnProduct.propTypes = {
-    propiedadesBd: PropTypes.arrayOf(PropTypes.string).isRequired,
-    type: PropTypes.string.isRequired,
-    titulo: PropTypes.string.isRequired,
-    genero: PropTypes.string.isRequired
-  };
 
-export default BtnProduct;
+export default BtnPeliculas;

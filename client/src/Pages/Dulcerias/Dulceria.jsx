@@ -2,18 +2,18 @@
 import Tabla from "../../Components/Tabla";
 import {Typography} from "@material-tailwind/react";
 import { useEffect, useState } from "react";
-import { getDulces } from "../../../../server/controllers/dulceria.controllers";
+import { getDulces } from "../../api/dulceria";
 import { Spinner } from "@material-tailwind/react";
 import BtnDulceria from "../../Components/Btn/Dulceria/BtnDulceria";
 
 
 const Dulceria = () => {
-
-  const propiedadesTb = ['nombre', 'categoria', 'marca', 'precio', 'stock','descripcion','url'];
-  const propiedades = ['nombre', 'categoria', 'marca', 'precio', 'stock','descripcion','url'];
+  const propiedadesTb = ['nombre', 'categoria', 'marca', 'precio', 'stock', 'descripcion', 'url'];
+  const propiedades = ['nombre', 'categoria', 'marca', 'precio', 'stock'];
 
   const [loading, setLoading] = useState(true);
   const [dulces, setDulces] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -21,7 +21,7 @@ const Dulceria = () => {
         const data = await getDulces();
         setDulces(data);
       } catch (error) {
-        console.error('Error fetching admins:', error);
+        console.error('Error fetching dulces:', error);
       } finally {
         setLoading(false);
       }
@@ -30,26 +30,24 @@ const Dulceria = () => {
   }, []);
 
   return (
-    <div className="m-10">  
-      <Typography variant="h2" className="text-center">
+    <div className="m-10">
+      <Typography variant="h2" className="text-center mb-5">
         Dulceria
       </Typography>
-      <div>
-        {loading ? (
-          <div className=" flex text-center justify-center ">
-            <Spinner color="blue" size="xxl"  className="flex justify-center m-20 w-28 h-28"/>
+      {loading ? (
+        <div className="flex justify-center">
+          <Spinner color="blue" size="xxl" className="m-20 w-28 h-28" />
+        </div>
+      ) : (
+        <>
+          <Tabla propiedadesBd={propiedades} bd={dulces} title="Dulces" />
+          <div className="my-5 flex justify-center">
+            <BtnDulceria propiedadesBd={propiedadesTb} type="new" titulo="dulces" />
           </div>
-        ):(
-          <>
-          <Tabla propiedadesBd={propiedadesTb} bd={dulces} title={"Dulces"}/>
-          <div className="my-5">
-            <BtnDulceria propiedadesBd={propiedades} type="new" titulo="dulces" />
-          </div>
-          </>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
-}
+};
 
 export default Dulceria;
