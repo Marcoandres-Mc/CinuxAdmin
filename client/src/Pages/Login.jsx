@@ -35,11 +35,11 @@ const Login = () => {
   return (
     <>
 
-        <section className="flex flex-row justify-center items-center min-h-screen text-white ">
-            <figure className="w-auto flex justify-start">
+        <section className="flex flex-row justify-center items-center min-h-screen text-white " style={{ backgroundColor: '#ff7171'}}>
+            <figure className="w-auto flex justify-start" >
                 <img style={{height: "100vh"}} src={imgLogin} alt="" />
             </figure>
-            <div className="w-50 m-5 p-5 rounded-lg shadow-md max-w-md w-full text-black flex justify-center align-middle flex-col" style={{ backgroundColor: '#618c98'}}>
+            <div className="w-50 m-5 p-5 rounded-lg shadow-md max-w-md w-full text-black flex justify-center align-middle flex-col" style={{ backgroundColor: '#ff0000'}}>
                 <h3 className="text-3xl font-bold mb-4">Iniciar Sesión</h3>
                 <form onSubmit={onSubmit} className="grid grid-cols-1 gap-4 w-full">
                     <div>

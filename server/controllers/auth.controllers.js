@@ -66,7 +66,12 @@ export const logout = async (req, res) => {
 }
 
 export const profile = async (req, res) => {
-    res.json({ mensaje: 'Profile' });
+    const user = await Auth.findById(req.user.id).select('-password');
+    return res.json({
+        id: user._id,
+        userName: user.userName,
+        email: user.email,
+    });
 }
 export const getAdmins = async (req, res) => {
     const foundAdmins = await Auth.find();

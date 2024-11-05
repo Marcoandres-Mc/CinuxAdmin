@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const productSchema = new mongoose.Schema({
+const CatalogoCineSchema = new mongoose.Schema({
     nombre: {
       type: String,
       required: true,
@@ -13,11 +13,7 @@ const productSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    precio: {
-      type: String,
-      required: true,
-    },
-    stock: {
+    productora: {
       type: String,
       required: true,
     },
@@ -29,7 +25,7 @@ const productSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    date: {
+    fechaEstreno: {
       type: Date,
       default: Date.now,
     }
@@ -38,4 +34,4 @@ const productSchema = new mongoose.Schema({
     versionKey: false
   })
 
-export default mongoose.model('Products', productSchema);
+export default mongoose.model('Products', CatalogoCineSchema);
