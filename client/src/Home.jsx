@@ -4,16 +4,15 @@ import { Routes,Route } from "react-router-dom"
 import Cuentas from "./Pages/Cuentas/Cuentas"
 import Admins from "./Pages/Cuentas/Admins"
 import Usuarios from "./Pages/Cuentas/Usuarios"
-import Productos from "./Pages/Productos/Productos"
-import Ajustes from "./Pages/Productos/Ajustes"
-import VentasProductos from "./Pages/Productos/VentasProductos"
-import ImportacionProductos from "./Pages/Productos/ImportacionProductos"
+import CatalogoPeliculas from "./Pages/CatalogoPeliculas/CatalogoPeliculas"
+import Ajustes from "./Pages/CatalogoPeliculas/Ajustes"
+import VentasProductos from "./Pages/CatalogoPeliculas/VentasProductos"
+import ImportacionProductos from "./Pages/CatalogoPeliculas/ImportacionProductos"
 import PaginaNoDisponible from "./Pages/PaginaNoDisponible"
 import Provedores from "./Pages/Provedores"
 import Nav from "./Components/Nav"
 import Menu from "./Components/Menu"
 import BotonMenu from "./Components/BotonMenu"
-import HomePage from "./Pages/Home"
 
 
 
@@ -40,7 +39,7 @@ const Home = () => {
                     <Route path="usuarios" element={<Usuarios />} />
                 </Route>
 
-                <Route path="/productos/*" element={<Productos />}>
+                <Route path="/catalogoPeliculas/*" element={<CatalogoPeliculas />}>
                     <Route path="ajustes" element={<Ajustes />} />
                     <Route path="ventas" element={<VentasProductos />} />
                     <Route path="importacion" element={<ImportacionProductos />}/>

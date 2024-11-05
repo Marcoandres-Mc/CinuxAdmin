@@ -2,12 +2,12 @@ import { Card, Typography } from "@material-tailwind/react";
 
 import BtnDeleteA from "./Btn/Admin/BtnDeleteA";
 import BtnDeleteU from "./Btn/User/BtnDeleteU";
-import BtnDeleteP from "./Btn/Product/BtnDeleteP";
+import BtnDeleteP from "./Btn/Peliculas/BtnDeleteP";
 
 import {Button} from "@material-tailwind/react";
 import BtnUser from "./Btn/User/BtnUser";
 import BtnAdmin from "./Btn/Admin/BtnAdmin";
-import BtnProduct from "./Btn/Product/BtnProduct";
+import BtnProduct from "./Btn/Peliculas/BtnPeliculas";
 
 
  

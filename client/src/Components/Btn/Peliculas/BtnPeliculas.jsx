@@ -16,7 +16,7 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { registerProduct } from '../../../api/products';
+
 import Select from 'react-select';
 
 
@@ -35,7 +35,7 @@ const BtnProduct = ({propiedadesBd, type, titulo, genero}) => {
 
     const onSubmit = handleSubmit((data)=>{
         console.log(data);
-        registerProduct(data);
+        registerRegister(data);
 
     })
 

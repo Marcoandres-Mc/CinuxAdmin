@@ -15,7 +15,7 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { deleteProduct } from '../../../api/products';
+import { deletePelicula } from '../../../api/catalogoPeliculas';
 
 
 const BtnDeleteP = ({type, titulo,id}) => {
@@ -25,7 +25,7 @@ const BtnDeleteP = ({type, titulo,id}) => {
 
     const handleDelete = async () => {
         try {
-            await deleteProduct(id);
+            await deletePelicula(id);
             setOpen(!open)
           } catch (error) {
             console.error('Error deleting user:', error);

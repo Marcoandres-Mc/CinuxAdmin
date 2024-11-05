@@ -5,8 +5,8 @@ import Tabla from "../../Components/Tabla";
 
 import { useEffect, useState } from "react";
 import {Typography} from "@material-tailwind/react";
-import { getProducts } from "../../api/products.js";
-import BtnProduct from "../../Components/Btn/Product/BtnProduct";
+import { getPeliculas } from "../../api/catalogoPeliculas";
+import BtnPelicula from "../../Components/Btn/Peliculas/BtnPeliculas";
 import { Spinner } from "@material-tailwind/react";
 
 
@@ -16,15 +16,15 @@ const Ajustes = () => {
   const propiedades = ['nombre', 'marca', 'precio', 'stock', 'url', 'descripcion'];
 
   const categoria = ['laptops','celulares','gaming','componentes']
-  const [product, setProduct] = useState([]);
+  const [pelicula, setPelicula] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const data = await getProducts();
-        setProduct(data);
+        const data = await getPeliculas();
+        setPelicula(data);
       } catch (error) {
         console.error('Error fetching products:', error);
       } finally {
@@ -47,9 +47,9 @@ const Ajustes = () => {
           </div>
         ):(
           <>
-            <Tabla propiedadesBd={propiedadesTb} bd={product} title={"Productos"}/>
+            <Tabla propiedadesBd={propiedadesTb} bd={pelicula} title={"Productos"}/>
             <div className="my-5">
-              <BtnProduct propiedadesBd={propiedades} type="new" titulo="producto" genero="f" />
+              <BtnPelicula propiedadesBd={propiedades} type="new" titulo="producto" genero="f" />
             </div>
           </>
         )}
