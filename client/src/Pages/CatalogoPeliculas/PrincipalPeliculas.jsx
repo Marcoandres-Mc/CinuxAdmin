@@ -37,7 +37,7 @@ const Ajustes = () => {
     <div className="m-10">
 
       <Typography variant="h2" className="text-center">
-        Productos
+        Peliculas
       </Typography>
 
       <div>
@@ -47,7 +47,7 @@ const Ajustes = () => {
           </div>
         ):(
           <>
-            <Tabla propiedadesBd={propiedadesTb} bd={pelicula} title={"Productos"}/>
+            <Tabla propiedadesBd={propiedadesTb} bd={pelicula} title={"Peliculas"}/>
             <div className="my-5">
               <BtnPelicula propiedadesBd={propiedades} type="new" titulo="producto" genero="f" />
             </div>

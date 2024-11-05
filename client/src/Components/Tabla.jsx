@@ -8,6 +8,11 @@ import {Button} from "@material-tailwind/react";
 import BtnUser from "./Btn/User/BtnUser";
 import BtnAdmin from "./Btn/Admin/BtnAdmin";
 import BtnProduct from "./Btn/Peliculas/BtnPeliculas";
+import BtnPelicula from "./Btn/Peliculas/BtnPeliculas";
+import BtnSede from "./Btn/Sedes/BtnSedes";
+import BtnDeleteS from "./Btn/Sedes/BtnDeleteS";
+import BtnDulce from "./Btn/Dulceria/BtnDulceria";
+import BtnDeleteD from "./Btn/Dulceria/BtnDeleteD";
 
 
  
@@ -72,6 +77,9 @@ export function Tabla({propiedadesBd, bd, title,propiedades}) {
                     {title === "Admins" ? <BtnAdmin n={index} type="edit" bd={bd} titulo={title} /> : null}
                     {title === "Usuarios" ? <BtnUser type="edit" bd={bd} propiedadesBd={propiedadesBd} titulo={title} /> : null}
                     {title === "Productos" ? <BtnProduct type="edit" bd={bd} propiedadesBd={propiedadesBd} titulo={title} /> : null}
+                    {title === "Peliculas" ? <BtnPelicula type="edit" bd={bd} propiedadesBd={propiedadesBd} titulo={title} /> : null}
+                    {title === "Sedes" ? <BtnSede type="edit" bd={bd} propiedadesBd={propiedadesBd} titulo={title} /> : null}
+                    {title === "Dulces" ? <BtnDulce type="edit" bd={bd} propiedadesBd={propiedadesBd} titulo={title} /> : null}
                   </td>
 
                   <td className="p-4 text-center">
@@ -79,7 +87,9 @@ export function Tabla({propiedadesBd, bd, title,propiedades}) {
                       {title === "Admins" ? <BtnDeleteA type="delete" titulo={title} id={item._id} /> : null}
                       {title === "Usuarios" ? <BtnDeleteU type="delete" titulo={title} id={item._id} /> : null}
                       {title === "Productos" ? <BtnDeleteP type="delete" titulo={title} id={item._id} /> : null}
-                      
+                      {title === "Peliculas" ? <BtnDeleteP type="delete" titulo={title} id={item._id} /> : null}
+                      {title === "Sedes" ? <BtnDeleteS type="delete" titulo={title} id={item._id} /> : null}
+                      {title === "Dulces" ? <BtnDeleteD type="delete" titulo={title} id={item._id} /> : null}
                     </Button>
                   </td>
                 </tr>

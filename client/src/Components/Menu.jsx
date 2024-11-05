@@ -57,49 +57,39 @@ export function Menu({isDrawerOpen}) {
     },
     {
         id: 2,
-        nombre: 'Productos',
+        nombre: 'Peliculas',
         icon: ShoppingBagIcon,
         subcategorias: [
             {
                 id: 1,
-                nombre: 'Ajustes',
-                url: 'home/productos/ajustes'
+                nombre: 'Principal',
+                url: 'home/peliculas'
 
-            },
-            {
-                id: 2,
-                nombre: 'Ventas de Productos',
-                url: '/productos/ventas'
-            },
-            {
-                id: 3,
-                nombre: 'Importación de Productos',
-                url: '/productos/importacion'
             },
         ]   
     },
 
     {
         id: 3,
-        nombre: 'Provedores',
+        nombre: 'Dulceria',
         icon: CogIcon,
         subcategorias: [
             {
                 id: 1,
-                nombre: 'Provedores',
-                url: '/provedores'
+                nombre: 'Principal',
+                url: 'home/dulceria'
             }
         ]
     },
     {
         id: 4,
-        nombre: 'Configuraciones',
+        nombre: 'Sedes',
         icon: CogIcon,
         subcategorias: [
             {
                 id: 1,
-                nombre: 'Configuraciones',
-                url: '/configuraciones'
+                nombre: 'Principal',
+                url: 'home/sedes'
             }
         ]
     }

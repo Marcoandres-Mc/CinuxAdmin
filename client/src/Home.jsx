@@ -4,15 +4,13 @@ import { Routes,Route } from "react-router-dom"
 import Cuentas from "./Pages/Cuentas/Cuentas"
 import Admins from "./Pages/Cuentas/Admins"
 import Usuarios from "./Pages/Cuentas/Usuarios"
-import CatalogoPeliculas from "./Pages/CatalogoPeliculas/CatalogoPeliculas"
-import Ajustes from "./Pages/CatalogoPeliculas/Ajustes"
-import VentasProductos from "./Pages/CatalogoPeliculas/VentasProductos"
-import ImportacionProductos from "./Pages/CatalogoPeliculas/ImportacionProductos"
+import Dulceria from "./Pages/Dulcerias/Dulceria"
+import Sedes from "./Pages/Sedes/Sedes"
 import PaginaNoDisponible from "./Pages/PaginaNoDisponible"
-import Provedores from "./Pages/Provedores"
 import Nav from "./Components/Nav"
 import Menu from "./Components/Menu"
 import BotonMenu from "./Components/BotonMenu"
+import PrincipalPeliculas from "./Pages/CatalogoPeliculas/PrincipalPeliculas"
 
 
 
@@ -39,14 +37,11 @@ const Home = () => {
                     <Route path="usuarios" element={<Usuarios />} />
                 </Route>
 
-                <Route path="/catalogoPeliculas/*" element={<CatalogoPeliculas />}>
-                    <Route path="ajustes" element={<Ajustes />} />
-                    <Route path="ventas" element={<VentasProductos />} />
-                    <Route path="importacion" element={<ImportacionProductos />}/>
-
-                </Route>
+                <Route path="/peliculas" element={<PrincipalPeliculas />}/>
         
-              <Route path="/provedores" element={<Provedores />} />
+                <Route path="/dulceria" element={<Dulceria />} />
+
+                <Route path="/sedes" element={<Sedes />} />
               
             </Routes>
           </div>

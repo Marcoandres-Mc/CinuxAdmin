@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import PropTypes from 'prop-types';
 
@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import {
   Input,
   Option,
-  Select,
   Button,
   Dialog,
   Textarea,
@@ -17,39 +16,51 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { getUser, registerUser } from '../../../api/users';
+
+import Select from 'react-select';
 
 
 
-
-
-const BtnUser = ({propiedadesBd, type, titulo, genero}) => {
+const BtnProduct = ({propiedadesBd, type, titulo, genero}) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(!open);
 
     const letraInicial = genero === 'f' ? 'a' : 'o';
     const [letra] = useState(letraInicial);
 
-    const {register, handleSubmit, formState:{errors}} = useForm();
+
+
+
+    const {register, handleSubmit,formState:{errors}} = useForm();
 
     const onSubmit = handleSubmit((data)=>{
         console.log(data);
-        registerUser(data);
+        registerRegister(data);
 
     })
 
-    const [usuario, setUsuario] = useState({});
+    const options = [
+        { value: 'terror', label: 'terror' },
+        { value: 'accion', label: 'Accion' },
+        { value: 'comedia', label: 'Comedia' },
+        { value: 'drama', label: 'Drama' },
+        { value: 'ciencia ficcion', label: 'Ciencia Ficcion' },
+        { value: 'animacion', label: 'Animacion' },
+        { value: 'fantasia', label: 'Fantasia' },
+        { value: 'romance', label: 'Romance' },
+      ]
 
-    useEffect(() => {
-        async function fetchData (){
-            if(params.id) {
-                const user = await getUser(params.id);
-                setUsuario(user);
-            }
-        }
-        fetchData ()
-    }
-    ,[errors])
+    const Categoria = () => (
+        <div className='my-3 p-0'>
+            <label className="text-blue-gray-700" htmlFor="categoria">{"categoria"}</label>
+            <Select 
+            {...register("categoria", {required: true})}
+            options={options} 
+            />
+            {errors["categoria"] && <Typography variant="small" color="red" className="mb-2 text-left font-medium">Este campo es requerido</Typography>}
+        </div>
+    )
+
 
 return (
     <>
@@ -76,7 +87,7 @@ return (
                 </IconButton>
         </DialogHeader>
         <form onSubmit={onSubmit}>
-            <DialogBody className="space-y-4 pb-6">
+            <DialogBody className="space-y-4 pb-6 max-h-96 overflow-y-auto">
                 <Typography
                 variant="small"
                 color="blue-gray"
@@ -112,41 +123,8 @@ return (
                     </div>
                     ))
                 }
+                <Categoria/>
                 
-                {type === 'edit' && propiedadesBd.map((propiedad, index) => (
-                    <div key={index}>
-                        <Typography
-                        variant="small"
-                        color="blue-gray"
-                        className="mb-2 text-left font-medium">
-                        {propiedad}
-                        </Typography>
-
-                        <label className="text-blue-gray-700" htmlFor={propiedad}>{propiedad}</label>
-
-                        <Input
-                        type='text'
-                        {...register(propiedad, { required: true })}
-                        color="gray"
-                        size="lg"
-                        placeholder=""
-                        name={propiedad}
-                        className="placeholder:opacity-100 focus:!border-t-gray-900"
-                        containerProps={{
-                            className: "!min-w-full",
-                        }}
-                        labelProps={{
-                            className: "hidden",
-                        }}
-                        defaultValue={propiedadesBd}
-                        />
-                        {errors[propiedad] && (
-                        <Typography variant="small" color="red" className="mb-2 text-left font-medium">
-                            Este campo es requerido
-                        </Typography>
-                        )}
-                    </div>
-                    ))}          
             </DialogBody>
             <DialogFooter>
                     <Button type='submit' className="ml-auto" onClick={handleOpen}>
@@ -160,11 +138,11 @@ return (
 )
 }
 
-BtnUser.propTypes = {
+BtnProduct.propTypes = {
     propiedadesBd: PropTypes.arrayOf(PropTypes.string).isRequired,
     type: PropTypes.string.isRequired,
     titulo: PropTypes.string.isRequired,
     genero: PropTypes.string.isRequired
   };
 
-export default BtnUser;
+export default BtnProduct;

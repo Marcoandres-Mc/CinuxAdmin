@@ -6,6 +6,7 @@ import authRoutes from './routes/auth.routes.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
+import dulceriaRoutes from './routes/dulceria.routes.js';
 
 
 const app = express();
@@ -28,7 +29,10 @@ app.use(cors(
 ))
 app.use('/api', catalogoPeliculasRoutes);
 app.use('/api', userRoutes);
+app.use('/api', catalogoPeliculasRoutes);
+app.use('/api', dulceriaRoutes);
 app.use('/api/auth', authRoutes);
+
 
 
 
