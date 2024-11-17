@@ -59,11 +59,17 @@ const Home = () => {
       <SimpleCard title={"Ganancia"} description={"$200"}></SimpleCard>
 
 
+
+
+
+
+
+
     </div>
     
     <div className="flex flex-row justify-center gap-5">
       <div>
-        <h2>Ultimas ordenes</h2>
+        <h2>Ultimas ordenesssssssssss</h2>
         <div className="flex flex-row flex-grow justify-center gap-5 ">
           <Tabla propiedadesBd={propiedadesUltimaOrdenes} bd={bdUltimaOrdenes}/>
         </div>
