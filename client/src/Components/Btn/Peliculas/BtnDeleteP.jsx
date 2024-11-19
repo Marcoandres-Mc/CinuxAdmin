@@ -28,7 +28,7 @@ const BtnDeleteP = ({type, titulo,id}) => {
             await deletePelicula(id);
             setOpen(!open)
           } catch (error) {
-            console.error('Error deleting user:', error);
+            console.error('Error deleting pelicula:', error);
           }
     };
 

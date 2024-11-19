@@ -15,10 +15,10 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { deleteDulce } from '../../../../../server/controllers/dulceria.controllers';
+import { deleteDulce } from '../../../api/dulceria';
 
 
-const BtnDeleteP = ({type, titulo,id}) => {
+const BtnDeleteD = ({type, titulo, id}) => {
     const [open, setOpen] = React.useState(false);
     
     const handleOpen = () => setOpen(!open);
@@ -28,7 +28,7 @@ const BtnDeleteP = ({type, titulo,id}) => {
             await deleteDulce(id);
             setOpen(!open)
           } catch (error) {
-            console.error('Error deleting user:', error);
+            console.error('Error deleting dulce:', error);
           }
     };
 
@@ -63,4 +63,4 @@ const BtnDeleteP = ({type, titulo,id}) => {
   )
 }
 
-export default BtnDeleteP
+export default BtnDeleteD

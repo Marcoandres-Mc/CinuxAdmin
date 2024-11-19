@@ -15,10 +15,11 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { deletePelicula } from '../../../api/catalogoPeliculas';
+
+import { deleteSede } from '../../../api/sedes';
 
 
-const BtnDeleteP = ({type, titulo,id}) => {
+const BtnDeleteS = ({type, titulo, id}) => {
     const [open, setOpen] = React.useState(false);
     
     const handleOpen = () => setOpen(!open);
@@ -28,7 +29,7 @@ const BtnDeleteP = ({type, titulo,id}) => {
             await deleteSede(id);
             setOpen(!open)
           } catch (error) {
-            console.error('Error deleting user:', error);
+            console.error('Error deleting Sede:', error);
           }
     };
 
@@ -63,4 +64,4 @@ const BtnDeleteP = ({type, titulo,id}) => {
   )
 }
 
-export default BtnDeleteP
+export default BtnDeleteS

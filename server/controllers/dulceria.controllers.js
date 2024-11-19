@@ -35,6 +35,18 @@ export const registerDulce = async (req, res) => {
   }
 };
 
+export const updateDulce = async (req, res) => {
+  try {
+    const dulce = await Dulce.findByIdAndUpdate(req.params.id, req.body, {new: true});
+    if (!dulce) {
+      return res.status(404).json({ mensaje: 'Dulce no encontrado' });
+    }
+    res.json({ mensaje: 'Dulce actualizado' });
+  } catch (error) {
+    res.status(500).json({ mensaje: error.message });
+  }
+};
+
 export const deleteDulce = async (req, res) => {
   try {
     const dulce = await Dulce.findByIdAndDelete(req.params.id);

@@ -35,6 +35,18 @@ export const registerPelicula = async (req, res) => {
       }
 };
 
+export const updatePelicula = async (req, res) => {
+  try {
+    const pelicula = await Pelicula.findByIdAndUpdate(req.params.id, req.body, {new: true});
+    if (!pelicula) {
+      return res.status(404).json({ mensaje: 'Pelicula no encontrada' });
+    }
+    res.json({ mensaje: 'Pelicula actualizada' });
+  } catch (error) {
+    res.status(500).json({ mensaje: error.message });
+  }
+}
+
 export const deletePelicula = async (req, res) => {
   try {
     const pelicula = await Pelicula.findByIdAndDelete(req.params.id);

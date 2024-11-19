@@ -8,7 +8,6 @@ export const getSedes = async (req, res) => {
     res.json(foundSedes);
 }
 
-
 export const getSede = async (req, res) => {
     try {
         const foundSedes = await Sedes.findById(req.params.id);
@@ -20,7 +19,6 @@ export const getSede = async (req, res) => {
         res.status(500).json({ mensaje: error.message });
     }
 }
-
 
 export const registerSede = async (req, res) => {
     const { nombre, direccion, telefono, ciudad, url } = req.body;
@@ -46,17 +44,25 @@ export const registerSede = async (req, res) => {
     }
 }
 
+export const updateSede = async (req, res) => {
+      try {
+        const sede = await Sedes.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        if (!sede) {
+          return res.status(404).json({ mensaje: 'Sede no encontrada' });
+        }
+        res.json({ mensaje: 'Sede actualizada' });
+      } catch (error) {
+        res.status(500).json({ mensaje: error.message });
+      }
+}
 
 export const deleteSede = async (req, res) => {
-    const { id } = req.params;
-  
-    if (!id) {
-      return res.status(400).json({ mensaje: 'ID es requerido' });
-    }
-  
     try {
-        await Sedes.findByIdAndDelete(id);
-        res.json({ mensaje: 'Sede eliminado' });
+        const sede = await Sedes.findByIdAndDelete(req.params.id, req.body, {new: true});
+        if (!sede) {
+        return res.status(404).json({ mensaje: 'Sede no encontrada' });
+        }
+        res.json({ mensaje: 'Sede eliminada' });
     } catch (error) {
         res.status(500).json({ mensaje: error.message });
     }

@@ -23,6 +23,7 @@ export const getUserNombre = async (req,res) =>{
         res.status(500).json({ mensaje: error.message });
     }
 }
+
 export const getAdmins = async (req, res) => {
     const foundAdmins = await Auth.find();
     if(!foundAdmins){

@@ -28,13 +28,8 @@ const Login = () => {
         
     })
 
-    
-
-
-
   return (
     <>
-
         <section className="flex flex-row justify-center items-center min-h-screen text-white " style={{ backgroundColor: '#ff7171'}}>
             <figure className="w-auto flex justify-start" >
                 <img style={{height: "100vh"}} src={imgLogin} alt="" />
@@ -43,7 +38,7 @@ const Login = () => {
                 <h3 className="text-3xl font-bold mb-4">Iniciar Sesión</h3>
                 <form onSubmit={onSubmit} className="grid grid-cols-1 gap-4 w-full">
                     <div>
-                        <label htmlFor="userName" className="block text-gray-300 text-black">UserName</label>
+                        <label htmlFor="userName" className="block text-gray-300">Username</label>
                         <input
                             type="text"
                             {...register("userName", { required: true })} 
@@ -54,7 +49,7 @@ const Login = () => {
                         />
                     </div>
                     <div>
-                        <label htmlFor="password" className="block text-gray-300 text-black">Contraseña</label>
+                        <label htmlFor="password" className="block text-gray-300 ">Contraseña</label>
                         <input
                             type="password"
                             {...register("password", { required: true })} 
@@ -68,7 +63,7 @@ const Login = () => {
                     <div className="text-center">
                         <button
                             type="submit"
-                            className="mt-4 px-4 py-2 text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg"
+                            className="mt-4 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 transition-colors duration-300"
                         >
                             Iniciar Sesión
                         </button>

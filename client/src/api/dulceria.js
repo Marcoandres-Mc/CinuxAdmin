@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = "http://localhost:3500"
+const API = import.meta.env.VITE_API_URL || "http://localhost:3500"
 
 
 export const getDulces = async () => {
@@ -33,6 +33,15 @@ export const registerDulce = async (dulce) => {
     }
 };
 
+export const updateDulce = async (dulce) => {
+    try {
+        const response = await axios.put(`${API}/api/dulces/${dulce._id}`, dulce);
+        return response.data;
+    } catch (error) {
+        console.error(`Error updating pelicula with id ${dulce._id}:`, error);
+        throw error;
+    }
+}
 
 export const deleteDulce = async (id) => {
     try {

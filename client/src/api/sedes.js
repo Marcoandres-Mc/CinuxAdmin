@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = "http://localhost:3500"
+const API = import.meta.env.VITE_API_URL || "http://localhost:3500"
 
 
 export const getSedes = async () => {
@@ -33,9 +33,19 @@ export const registerSedes = async (sede) => {
     }
 }
 
+export const updateSede = async (sede) => {
+    try {
+        const response = await axios.put(`${API}/api/sede/${sede._id}`, sede);
+        return response.data;
+    } catch (error) {
+        console.error(`Error updating sede with id ${sede._id}:`, error);
+        throw error;
+    }
+}
+
 export const deleteSede = async (id) => {
     try {
-        const response = await axios.delete(`${API}/api/sedes/${id}`);
+        const response = await axios.delete(`${API}/api/sede/${id}`);
         return response.data;
     } catch (error) {
         console.error(`Error deleting sede with id ${id}:`, error);

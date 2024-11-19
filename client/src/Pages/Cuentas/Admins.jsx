@@ -5,8 +5,6 @@ import Tabla from '../../Components/Tabla';
 import BtnAdmin from "../../Components/Btn/Admin/BtnAdmin";
 import { getAdmins } from '../../api/auth';
 import { Spinner } from '@material-tailwind/react';
-
-
 import {Typography} from "@material-tailwind/react";
 
 

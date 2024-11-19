@@ -32,6 +32,16 @@ export const registerPelicula = async (pelicula) => {
   }
 };
 
+export const updatePelicula = async (pelicula) => {
+  try {
+    const response = await axios.put(`${API}/api/peliculas/${pelicula._id}`, pelicula);
+    return response.data;
+  } catch (error) {
+    console.error(`Error updating pelicula with id ${pelicula._id}:`, error);
+    return null;
+  }
+}
+
 export const deletePelicula = async (id) => {
   try {
     const response = await axios.delete(`${API}/api/peliculas/${id}`);
