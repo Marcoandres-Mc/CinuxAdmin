@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 })
 app.use(cors(
     {
-        origin: 'http://localhost:5173', //'https://fronted-production-43ca.up.railway.app'
+        origin: 'https://cinux-admin-ly9zs3a9z-marcoandres-mcs-projects.vercel.app/', //'https://fronted-production-43ca.up.railway.app'
         credentials: true
     }
 ))
