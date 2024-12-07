@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = import.meta.env.VITE_API_URL || "http://localhost:3500"
+const API = "http://localhost:3500";
 
 
 export const getDulces = async () => {

@@ -11,6 +11,12 @@ import Nav from "./Components/Nav"
 import Menu from "./Components/Menu"
 import BotonMenu from "./Components/BotonMenu"
 import PrincipalPeliculas from "./Pages/CatalogoPeliculas/PrincipalPeliculas"
+import Dashboard from "./Pages/Dashboard/Dashboard"
+import IngresoUsuarios from "./Pages/Dashboard/IngresoUsuarios"
+import PeliculasMasVistas from "./Pages/Dashboard/PeliculasMasVistas"
+import ProductoMasVendido from "./Pages/Dashboard/ProductoMasVendido"
+import VentaDeEntradas from "./Pages/Dashboard/VentaDeEntradas"
+
 
 
 
@@ -42,6 +48,13 @@ const Home = () => {
                 <Route path="/dulceria" element={<Dulceria />} />
 
                 <Route path="/sedes" element={<Sedes />} />
+
+                <Route path="/dashboard/*" element={<Dashboard/>}>
+                    <Route path="ingresoUsuarios" element={<IngresoUsuarios />} />
+                    <Route path="peliculasMasVistas" element={<PeliculasMasVistas />} />
+                    <Route path="productoMasVendido" element={<ProductoMasVendido />} />
+                    <Route path="ventaDeEntradas" element={<VentaDeEntradas />} />
+                </Route>
               
             </Routes>
           </div>

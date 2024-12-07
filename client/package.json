@@ -1,8 +1,8 @@
 {
   "name": "client",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "App.js",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
@@ -10,8 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
     "@heroicons/react": "^2.1.5",
     "@material-tailwind/react": "^2.1.10",
+    "@mui/material": "^6.1.10",
+    "@mui/x-charts": "^7.23.1",
     "axios": "^1.7.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -32,6 +36,7 @@
     "globals": "^15.9.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",
-    "vite": "^5.4.8"
+    "vite": "^5.4.8",
+    "webpack-bundle-analyzer": "^4.10.2"
   }
 }
