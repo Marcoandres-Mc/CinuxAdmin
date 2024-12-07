@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 })
 app.use(cors(
     {
-        origin: 'https://cinux-admin.vercel.app/', 
+        origin:'http://localhost:5173', //'https://cinux-admin.vercel.app/'
         credentials: true
     }
 ))
