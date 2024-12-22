@@ -21,12 +21,11 @@ app.use(cookieParser());
 app.get('/', (req, res) => {
     res.send('Conectado');
 })
-app.use(cors(
-    {
-        origin:process.env.MAIN_PAGE, 
-        credentials: true
-    }
-))
+app.use(cors({
+    origin: process.env.MAIN_PAGE.replace(/\/$/, ''), 
+    credentials: true
+}));
+
 app.use('/api', catalogoPeliculasRoutes);
 app.use('/api', userRoutes);
 app.use('/api', sedesRoutes)
