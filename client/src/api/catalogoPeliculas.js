@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { API } from './urlAPI';
+console.log(API);
 
 export const getPeliculas = async () => {
   try {
