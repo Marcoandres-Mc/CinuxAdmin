@@ -22,4 +22,4 @@ function IngresoUsuarios() {
   )
 }
 
-export default IngresoUsuarios
+export default IngresoUsuarios;
