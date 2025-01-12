@@ -16,10 +16,12 @@
     "@material-tailwind/react": "^2.1.10",
     "@mui/material": "^6.1.10",
     "@mui/x-charts": "^7.23.1",
+    "@reduxjs/toolkit": "^2.5.0",
     "axios": "^1.7.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.1",
+    "react-redux": "^9.2.0",
     "react-router-dom": "^6.27.0",
     "react-select": "^5.8.2",
     "recharts": "^2.14.1"
