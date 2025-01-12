@@ -1,3 +1,3 @@
-export const API= "http://localhost:3500" 
+export const API= "https://cinuxadmin.onrender.com" 
 
-//"https://cinuxadmin.onrender.com"
+//"http://localhost:3500" 
