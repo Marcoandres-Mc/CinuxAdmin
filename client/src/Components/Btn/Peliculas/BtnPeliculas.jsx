@@ -39,6 +39,7 @@ const BtnPeliculas = ({type, titulo, genero,bd, n}) => {
             await registerPelicula(data);
 
             navigate('/home');
+            
             setTimeout(() => {
                 navigate('/home/peliculas'); 
             }, 20);

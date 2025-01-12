@@ -9,10 +9,10 @@ const cambioSlice = createSlice({
   initialState,
   reducers: {
     toggleCambio: (state) => {
-      state.value = !state.value; 
+      state.value = !state.value;
     },
     setCambio: (state, action) => {
-      state.value = action.payload; 
+      state.value = action.payload;
     },
   },
 });

@@ -39,9 +39,10 @@ const BtnAdmin = ({type, titulo, genero,bd, n}) => {
             console.log(data);
             await registerAdmin(data);
 
-            navigate('/home');  // Paso intermedio
+            navigate('/home');
+            
             setTimeout(() => {
-            navigate('/home/cuentas/admins');  // Vuelve a navegar a /home, esto fuerza el render
+            navigate('/home/cuentas/admins'); 
             }, 20);
         });
 
