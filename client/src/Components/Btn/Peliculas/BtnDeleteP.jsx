@@ -16,20 +16,25 @@ import {
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { deletePelicula } from '../../../api/catalogoPeliculas';
-
+import { useNavigate } from 'react-router-dom';
 
 const BtnDeleteP = ({type, titulo,id}) => {
     const [open, setOpen] = React.useState(false);
     
     const handleOpen = () => setOpen(!open);
+    const navigate = useNavigate();
 
     const handleDelete = async () => {
-        try {
-            await deletePelicula(id);
-            setOpen(!open)
-          } catch (error) {
-            console.error('Error deleting pelicula:', error);
-          }
+        await deletePelicula(id);
+
+        navigate('/home');
+        setTimeout(() => {
+            navigate('/home/peliculas'); 
+        }, 20);
+
+        setOpen(!open)
+
+        
     };
 
   return (

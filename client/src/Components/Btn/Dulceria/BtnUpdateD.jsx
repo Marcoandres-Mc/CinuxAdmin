@@ -17,21 +17,27 @@ import {
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { updateDulce } from '../../../api/dulceria';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const BtnUpdateD = ({ type, titulo, genero, bd, i }) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(!open);
+    const navigate = useNavigate();
 
     const propiedades = ['nombre', 'categoria', 'marca', 'precio', 'stock', 'descripcion', 'url'];
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = handleSubmit((data) => {
+    const onSubmit = handleSubmit( async (data) => {
         data._id = bd[i]._id;
         console.log(data)
-        updateDulce(data);
+        await updateDulce(data);
+
+        navigate('/home');
+            setTimeout(() => {
+                navigate('/home/dulceria'); 
+            }, 20);
     });
 
     return (

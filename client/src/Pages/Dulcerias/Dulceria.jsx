@@ -36,12 +36,12 @@ const Dulceria = () => {
       </Typography>
       {loading ? (
         <div className="flex justify-center">
-          <Spinner color="blue" size="xxl" className="m-20 w-28 h-28" />
+          <Spinner color="blue" size="xxl" className="flex justify-center m-20 w-28 h-28" />
         </div>
       ) : (
         <>
           <Tabla propiedadesBd={propiedades} bd={dulces} title="Dulces" />
-          <div className="my-5 flex justify-center">
+          <div className="my-5">
             <BtnDulceria propiedadesBd={propiedadesTb} type="new" titulo="dulces" />
           </div>
         </>

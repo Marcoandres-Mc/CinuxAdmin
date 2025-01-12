@@ -8,13 +8,14 @@ import { Spinner } from '@material-tailwind/react';
 import {Typography} from "@material-tailwind/react";
 
 
-
 const Admins = () => {
   const propiedadesTb = ['userName', 'email', 'password'];
   const propiedades = ['userName', 'email', 'date'];
   
   const [loading, setLoading] = useState(true);
   const [admins, setAdmins] = useState([]);
+
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);

@@ -19,10 +19,12 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { registerAdmin, getAdmins, getAdmin, updateAdmin  } from '../../../api/auth';
 
-
+import { useNavigate } from 'react-router-dom';
 
 
 const BtnAdmin = ({type, titulo, genero,bd, n}) => {
+
+
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(!open);
 
@@ -31,10 +33,16 @@ const BtnAdmin = ({type, titulo, genero,bd, n}) => {
     const [letra] = useState(letraInicial);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    
-        const onSubmit = handleSubmit((data) => {
+        const navigate = useNavigate();
+
+        const onSubmit  = handleSubmit( async (data) => {
             console.log(data);
-            registerAdmin(data);
+            await registerAdmin(data);
+
+            navigate('/home');  // Paso intermedio
+            setTimeout(() => {
+            navigate('/home/cuentas/admins');  // Vuelve a navegar a /home, esto fuerza el render
+            }, 20);
         });
 
 

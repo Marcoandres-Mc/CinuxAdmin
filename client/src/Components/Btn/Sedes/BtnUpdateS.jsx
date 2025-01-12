@@ -18,6 +18,7 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
 import { updateSede } from '../../../api/sedes';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -25,13 +26,19 @@ const BtnUpdateS = ({type, titulo, genero,bd, i}) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(!open);
     const propiedades = ['nombre', 'direccion', 'ciudad', 'telefono', 'url'];
+    const navigate = useNavigate();
 
     const {register, handleSubmit,formState:{errors}} = useForm();
 
-    const onSubmit = handleSubmit((data)=>{
+    const onSubmit = handleSubmit( async (data)=>{
         data._id = bd[i]._id;
         console.log(data)
-        updateSede(data);
+        await updateSede(data);
+
+        navigate('/home');
+        setTimeout(() => {
+            navigate('/home/sedes'); 
+        }, 20);
     })
 
 return (

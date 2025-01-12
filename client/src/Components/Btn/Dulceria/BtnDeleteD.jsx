@@ -16,20 +16,22 @@ import {
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { deleteDulce } from '../../../api/dulceria';
-
+import { useNavigate } from 'react-router-dom';
 
 const BtnDeleteD = ({type, titulo, id}) => {
     const [open, setOpen] = React.useState(false);
     
     const handleOpen = () => setOpen(!open);
+    const navigate = useNavigate();
 
     const handleDelete = async () => {
-        try {
-            await deleteDulce(id);
-            setOpen(!open)
-          } catch (error) {
-            console.error('Error deleting dulce:', error);
-          }
+        await deleteDulce(id);
+        navigate('/home');
+        setTimeout(() => {
+            navigate('/home/dulceria'); 
+        }, 20);
+
+        setOpen(!open)
     };
 
   return (

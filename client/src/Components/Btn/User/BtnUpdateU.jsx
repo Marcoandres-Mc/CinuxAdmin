@@ -17,20 +17,26 @@ import {
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { getUser, registerUser,updateUser } from '../../../api/users';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const BtnUpdateU = ({ type, titulo, genero,i, bd,id }) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(!open);
+    const navigate = useNavigate();
 
     const propiedades = ['nombre', 'email', 'password'];
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = handleSubmit((data) => {
+    const onSubmit = handleSubmit( async(data) => {
         console.log(data)
-        updateUser(data,id);
+        await updateUser(data,id);
+
+        navigate('/home');
+        setTimeout(() => {
+            navigate('/home/cuentas/usuarios'); 
+        }, 20);
     });
 
    

@@ -92,33 +92,6 @@ export function Menu({isDrawerOpen}) {
                 url: 'home/sedes'
             }
         ]
-    },
-    {
-        id: 5,
-        nombre: 'dashboard',
-        icon: CogIcon,
-        subcategorias: [
-            {
-                id: 1,
-                nombre: 'ingresoUsuarios',
-                url: 'home/dashboard/ingresoUsuarios'
-            },
-            {
-                id: 2,
-                nombre: 'peliculasMasVistas',
-                url: 'home/dashboard/peliculasMasVistas'
-            },
-            {
-                id: 3,
-                nombre: 'productoMasVendido',
-                url: 'home/dashboard/productoMasVendido'
-            },
-            {
-                id: 4,
-                nombre: 'ventaDeEntradas',
-                url: 'home/dashboard/ventaDeEntradas'
-            }
-        ]
     }
 ];
  

@@ -17,20 +17,25 @@ import {
 import { XMarkIcon } from "@heroicons/react/24/outline";
 
 import { deleteSede } from '../../../api/sedes';
+import { useNavigate } from 'react-router-dom';
 
 
 const BtnDeleteS = ({type, titulo, id}) => {
     const [open, setOpen] = React.useState(false);
     
     const handleOpen = () => setOpen(!open);
+    const navigate = useNavigate();
 
     const handleDelete = async () => {
-        try {
-            await deleteSede(id);
-            setOpen(!open)
-          } catch (error) {
-            console.error('Error deleting Sede:', error);
-          }
+        await deleteSede(id);
+        
+        navigate('/home');
+        setTimeout(() => {
+            navigate('/home/sedes'); 
+        }, 20);
+
+        setOpen(!open)
+
     };
 
   return (

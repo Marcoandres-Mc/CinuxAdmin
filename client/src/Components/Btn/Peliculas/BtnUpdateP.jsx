@@ -18,22 +18,27 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 
 import Select from 'react-select';
 import {  updatePelicula } from '../../../api/catalogoPeliculas';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const BtnUpdateP = ({type, titulo, genero,bd, i}) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(!open);
-
+    const navigate = useNavigate();
 
     const propiedades = ['nombre', 'productora','categoria', 'descripcion','url'];
 
     const {register, handleSubmit,formState:{errors}} = useForm();
 
-    const onSubmit = handleSubmit((data)=>{
+    const onSubmit = handleSubmit( async(data)=>{
             data._id = bd[i]._id;
             console.log(data)
-            updatePelicula(data);
+            await updatePelicula(data);
+
+            navigate('/home');
+            setTimeout(() => {
+                navigate('/home/peliculas'); 
+            }, 20);
     })
 
     

@@ -19,7 +19,6 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import { registerAdmin, getAdmins, getAdmin, updateAdmin  } from '../../../api/auth';
 
 
-
 const BtnUpdateA = ({ type, titulo, genero,i, bd,id }) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(!open);
@@ -28,9 +27,14 @@ const BtnUpdateA = ({ type, titulo, genero,i, bd,id }) => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = handleSubmit((data) => {
+    const onSubmit = handleSubmit( async(data) => {
         console.log(data)
-        updateAdmin(data,id);
+        await updateAdmin(data,id);
+
+        navigate('/home');
+        setTimeout(() => {
+            navigate('/home/peliculas'); 
+        }, 20);
     });
 
   

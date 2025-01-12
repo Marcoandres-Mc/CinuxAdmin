@@ -17,12 +17,14 @@ import {
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { registerDulce } from '../../../api/dulceria';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const BtnDulceria = ({ type, titulo, genero, bd, n }) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(!open);
+    const navigate = useNavigate();
 
     const propiedades = ['nombre', 'categoria', 'marca', 'precio', 'stock', 'descripcion', 'url'];
     const letraInicial = genero === 'f' ? 'a' : 'o';
@@ -30,9 +32,15 @@ const BtnDulceria = ({ type, titulo, genero, bd, n }) => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const onSubmit = handleSubmit((data) => {
+    const onSubmit = handleSubmit( async (data) => {
         console.log(data);
-        registerDulce(data);
+        await registerDulce(data);
+
+        navigate('/home');
+            
+            setTimeout(() => {
+                navigate('/home/dulceria'); 
+            }, 20);
     });
 
     return (

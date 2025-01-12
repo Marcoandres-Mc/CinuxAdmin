@@ -18,7 +18,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 
 import Select from 'react-select';
 import { getPelicula, registerPelicula} from '../../../api/catalogoPeliculas';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const BtnPeliculas = ({type, titulo, genero,bd, n}) => {
@@ -32,10 +32,18 @@ const BtnPeliculas = ({type, titulo, genero,bd, n}) => {
 
 
     const {register, handleSubmit,formState:{errors}} = useForm();
+    const navigate = useNavigate();
 
-    const onSubmit = handleSubmit((data)=>{
+    const onSubmit = handleSubmit( async (data)=>{
             console.log(data);
-            registerPelicula(data);
+            await registerPelicula(data);
+
+            navigate('/home');
+            setTimeout(() => {
+                navigate('/home/peliculas'); 
+            }, 20);
+
+
     })
 
 

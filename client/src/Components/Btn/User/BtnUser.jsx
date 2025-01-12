@@ -18,7 +18,7 @@ import {
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { getUser, registerUser } from '../../../api/users';
-
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -30,13 +30,19 @@ const BtnUser = ({type, titulo, genero,bd, n}) => {
 
     const letraInicial = genero === 'f' ? 'a' : 'o';
     const [letra] = useState(letraInicial);
+    const navigate = useNavigate();
 
     const {register, handleSubmit, formState:{errors}} = useForm();
 
-    const onSubmit = handleSubmit((data)=>{
-        data._id = bd[i]._id;
+    const onSubmit = handleSubmit( async (data)=>{
         console.log(data);
-        registerUser(data);
+        await registerUser(data);
+
+        navigate('/home');
+            
+        setTimeout(() => {
+        navigate('/home/cuentas/usuarios'); 
+        }, 20);
 
     })
 
