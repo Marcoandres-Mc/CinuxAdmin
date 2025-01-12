@@ -108,6 +108,31 @@ export const deleteUser = async (req, res) => {
     }
 }
 
+    export const updateUser = async (req, res) => {
+        const { id } = req.params;
+        const { nombre, email, password } = req.body;
+      
+        if (!id) {
+          return res.status(400).json({ mensaje: 'ID es requerido' });
+        }
+      
+        try {
+          const foundUser = await User.findById(id);
+      
+          if (!foundUser) {
+            return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+          }
+      
+          const passwordCrypt = await bcrypt.hash(password, 10);
+      
+          await User.findByIdAndUpdate(id, { nombre, email, password: passwordCrypt });
+          res.json({ mensaje: 'Usuario actualizado' });
+        } catch (error) {
+          res.status(500).json({ mensaje: error.message });
+        }
+      }
+
+
 
 
 

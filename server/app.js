@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
     res.send('Conectado');
 })
 app.use(cors({
-    origin: process.env.MAIN_PAGE.replace(/\/$/, ''), //"http://localhost:3500"
+    origin: process.env.MAIN_PAGE.replace(/\/$/, ''), //"http://localhost:5174"
     credentials: true
 }));
 

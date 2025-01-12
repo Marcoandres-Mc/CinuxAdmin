@@ -5,8 +5,8 @@ import BtnDeleteU from "./Btn/User/BtnDeleteU";
 import BtnDeleteP from "./Btn/Peliculas/BtnDeleteP";
 
 import {Button} from "@material-tailwind/react";
-import BtnUser from "./Btn/User/BtnUser";
-import BtnAdmin from "./Btn/Admin/BtnAdmin";
+import BtnUpdateU from "./Btn/User/BtnUpdateU";
+import BtnUpdateA from "./Btn/Admin/BtnUpdateA";
 import BtnDeleteS from "./Btn/Sedes/BtnDeleteS";
 import BtnDeleteD from "./Btn/Dulceria/BtnDeleteD";
 import BtnUpdateP from "./Btn/Peliculas/BtnUpdateP";
@@ -75,8 +75,8 @@ export function Tabla({propiedadesBd, bd, title,propiedades}) {
                     ))
                   }
                   <td className="p-4 text-center"> 
-                  {title === "Admins" ? <BtnAdmin n={index} type="edit" bd={bd} titulo={title} /> : null}
-                  {title === "Usuarios" ? <BtnUser type="edit" bd={bd} propiedadesBd={propiedadesBd} titulo={title} genero="m" /> : null}
+                  {title === "Admins" ? <BtnUpdateA type="edit" bd={bd} id={item._id} i={index} propiedadesBd={propiedadesBd} titulo={title} /> : null}
+                  {title === "Usuarios" ? <BtnUpdateU type="edit" bd={bd} id={item._id} i={index} propiedadesBd={propiedadesBd} titulo={title} /> : null}
                   {title === "Peliculas" ? <BtnUpdateP type="edit" bd={bd} i={index} propiedadesBd={propiedadesBd} titulo={title} /> : null}
                   {title === "Sedes" ? <BtnUpdateS type="edit" bd={bd} i={index} propiedadesBd={propiedadesBd} titulo={title} /> : null}
                   {title === "Dulces" ? <BtnUpdateD type="edit" bd={bd} i={index} propiedadesBd={propiedadesBd} titulo={title} /> : null}

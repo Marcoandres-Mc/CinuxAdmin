@@ -34,23 +34,11 @@ const BtnUser = ({type, titulo, genero,bd, n}) => {
     const {register, handleSubmit, formState:{errors}} = useForm();
 
     const onSubmit = handleSubmit((data)=>{
+        data._id = bd[i]._id;
         console.log(data);
         registerUser(data);
 
     })
-
-    const [usuario, setUsuario] = useState({});
-
-    useEffect(() => {
-        async function fetchData (){
-            if(params.id) {
-                const user = await getUser(params.id);
-                setUsuario(user);
-            }
-        }
-        fetchData ()
-    }
-    ,[errors])
 
 return (
     <>

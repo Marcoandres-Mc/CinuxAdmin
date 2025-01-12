@@ -102,6 +102,26 @@ export const deleteAdmin = async (req, res) => {
       res.status(500).json({ mensaje: error.message });
     }
   }
+  export const updateAdmin = async (req, res) => {
+    const { id } = req.params;
+  
+    if (!id) {
+      return res.status(400).json({ mensaje: 'ID es requerido' });
+    }
+  
+    try {
+      const foundAdmin = await Auth.findById(id);
+  
+      if (!foundAdmin) {
+        return res.status(404).json({ mensaje: 'Usuario no encontrado' });
+      }
+  
+      const updatedAdmin = await Auth.findByIdAndUpdate(id, req.body, { new: true });
+      res.json(updatedAdmin);
+  
+    } catch (error) {
+      res.status(500).json({ mensaje: error.message });
+    }
+  }
 
-
-export default { register, login, logout, profile, getAdmins, deleteAdmin };	
+export default { register, login, logout, profile, getAdmins, deleteAdmin, updateAdmin };	

@@ -35,7 +35,7 @@ const BtnPeliculas = ({type, titulo, genero,bd, n}) => {
 
     const onSubmit = handleSubmit((data)=>{
             console.log(data);
-        registerPelicula(data);
+            registerPelicula(data);
     })
 
 

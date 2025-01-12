@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { register, login, logout, profile, getAdmins, deleteAdmin} from "../controllers/auth.controllers.js";
+import { register, login, logout, profile, getAdmins, deleteAdmin, updateAdmin} from "../controllers/auth.controllers.js";
 
 import authRequired from "../middlewares/validateToken.js";
 
@@ -19,5 +19,7 @@ router.post("/profile", authRequired ,profile);
 router.get("/admins", getAdmins);
 
 router.delete("/admins/:id", deleteAdmin);
+
+router.put("/admin/:id", updateAdmin);
 
 export default router;
