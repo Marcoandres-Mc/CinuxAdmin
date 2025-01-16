@@ -17,12 +17,12 @@ import {
 } from "@material-tailwind/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { registerAdmin, getAdmins, getAdmin, updateAdmin  } from '../../../api/auth';
-
+import { useNavigate } from 'react-router-dom';
 
 const BtnUpdateA = ({ type, titulo, genero,i, bd,id }) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(!open);
-
+    const navigate = useNavigate();
     const propiedades = ['userName', 'email', 'password'];
 
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -33,7 +33,7 @@ const BtnUpdateA = ({ type, titulo, genero,i, bd,id }) => {
 
         navigate('/home');
         setTimeout(() => {
-            navigate('/home/peliculas'); 
+            navigate('/home/cuentas/admins'); 
         }, 20);
     });
 

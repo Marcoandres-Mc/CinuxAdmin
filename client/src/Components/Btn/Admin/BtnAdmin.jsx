@@ -23,8 +23,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const BtnAdmin = ({type, titulo, genero,bd, n}) => {
-
-
+    
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(!open);
 
@@ -33,18 +32,18 @@ const BtnAdmin = ({type, titulo, genero,bd, n}) => {
     const [letra] = useState(letraInicial);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-        const navigate = useNavigate();
+    const navigate = useNavigate();
 
-        const onSubmit  = handleSubmit( async (data) => {
-            console.log(data);
-            await registerAdmin(data);
+    const onSubmit  = handleSubmit( async (data) => {
+        console.log(data);
+        await registerAdmin(data);
 
-            navigate('/home');
-            
-            setTimeout(() => {
-            navigate('/home/cuentas/admins'); 
-            }, 20);
-        });
+        navigate('/home');
+        
+        setTimeout(() => {
+        navigate('/home/cuentas/admins'); 
+        }, 20);
+    });
 
 
 return (

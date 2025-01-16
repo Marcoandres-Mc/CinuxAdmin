@@ -1,35 +1,43 @@
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { useAuth } from "../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { loginAdmin } from "../api/auth";
 import { useState } from "react";
 import imgLogin from '../assets/imgLogin.jpg';
+import Spinner from "../Components/Spinner";
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
+    const [loading, setLoading] = useState(false);
     const { login } = useAuth();
     const navigate = useNavigate();
      const [error, setError] = useState(false);
 
     const onSubmit = handleSubmit( async (data) => {
         try{
+            setLoading(true);
             const response = await loginAdmin(data);
             loginAdmin(data);
             if(response.status === 200){
                 login(response.data);
+
                 navigate('/home');
+                setLoading(false);
                 setError(false);
             }else {
                 setError(true);
+                setLoading(false);
             }
         } catch (err){
             setError(true);
+            setLoading(false);
         }
         
     })
 
   return (
     <>
+        {loading && <Spinner />}
         <section className="flex flex-row justify-center items-center min-h-screen text-white " style={{ backgroundColor: '#f94545'}}>
             <figure className="w-auto flex justify-start" >
                 <img style={{height: "100vh"}} src={imgLogin} alt="" />
